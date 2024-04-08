@@ -11,11 +11,12 @@ import {
 import { checkAuth, voteCandidate } from "../features/authentication/authApi";
 import Edit from "./Edit";
 import Load from "./Load";
+import { setIsVoted } from "../features/authentication/authSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(null);
   const { totalCandidates } = useSelector((store) => store.candidates);
-  const { userInfo,isLoading } = useSelector((store) => store.auth);
+  const { userInfo,isLoading,isVoted} = useSelector((store) => store.auth);
   const { loading } = useSelector((store) => store.candidates);
   useEffect(() => {
     console.log("hello")
@@ -47,29 +48,37 @@ const Home = () => {
         candidate,
       };
       dispatch(voteCandidate(info));
-      setTimeout(() => {
-        dispatch(getAllCandidates());
-        dispatch(checkAuth());
-      }, 500);
+      
+      
     }
   };
+  
+  if(isVoted){
+    console.log('isvoted')
+    dispatch(getAllCandidates());
+    dispatch(checkAuth());
+    dispatch(setIsVoted())
+  }
 
   const delHandler = (candidate) => {
     dispatch(delCandidate({ candidate, email: userInfo.email }));
     setTimeout(() => {
       dispatch(getAllCandidates());
       dispatch(checkAuth());
-    }, 700);
+    }, 1000);
   };
   
   return (
     <div className="py-10 bg-[#151028] ">
       {
-        isLoading? 
+        (isLoading)? 
         <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 backdrop-blur-md">
      
+      <div className="bg-[#00e6e6] p-5 rounded-full opacity-50">
+      <Load/>
 
-       <Load/>
+      </div>
+       
  
  </div>:  <div>
         {allCandidates &&

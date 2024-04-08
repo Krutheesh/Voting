@@ -13,7 +13,7 @@ export const voteCandidate = createAsyncThunk("auth/vote" , async(userData) => {
     })
     const data = await response.json()
   
-    return 
+    return true
   } catch (error) {
     console.log(error)
   }

@@ -11,7 +11,9 @@ export const userSlice = createSlice({
   name:"auth",
   initialState,
   reducers:{
-    
+    setIsVoted : (state) => {
+      state.isVoted= false
+    }
   },
   extraReducers:(builder) => {
     builder.addCase(getAllUsers.pending, (state) => {
@@ -54,5 +56,5 @@ export const userSlice = createSlice({
 })
 
 
-
+export const {setIsVoted} = userSlice.actions
 export default userSlice.reducer

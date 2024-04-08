@@ -5,6 +5,7 @@ import candidateRoutes from "./routes/candidateRoutes.js";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import cloudinary from "cloudinary";
+import path from "path";
 const app = express();
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -21,4 +22,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/candidate", candidateRoutes);
 
+const __dirname = path.resolve();
+
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"))
+);
 export default app;

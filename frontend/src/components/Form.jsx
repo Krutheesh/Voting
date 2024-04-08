@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Ring } from "./Load";
+import Load from "./Load";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
