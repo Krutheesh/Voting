@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bjp-color-radial {
+ 
+  background-image: radial-gradient(circle at center, orange 15%, #221b46 70%);
+}
+.congress-color-radial {
+ 
+  background-image: radial-gradient(circle at center, rgb(4, 180, 42) 15%, #221b46 70%);
+}
+.brs-color-radial {
+ 
+  background-image: radial-gradient(circle at center, rgb(223, 22, 227) 15%, #221b46 70%);
+}
+.mis-color-radial {
+ 
+  background-image: radial-gradient(circle at center, rgb(0, 225, 255) 15%, #221b46 70%);
+}
