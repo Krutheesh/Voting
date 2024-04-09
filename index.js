@@ -11,7 +11,7 @@ dotenv.config();
       console.log(err.message, err.code);
       throw err;
     });
-
+ 
     app.listen(process.env.PORT, () => {
       console.log("listening on port " + process.env.PORT);
       console.log("DB connected");
