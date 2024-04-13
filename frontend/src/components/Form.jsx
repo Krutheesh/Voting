@@ -194,7 +194,7 @@ const Forms = () => {
             </p>
             {load ? null : (
               <p className="text-gray-600 p-2 m-2 cursor-pointer">
-                {isSignInForm ? "New to Netflix?" : "Already a Member?"}{" "}
+                {isSignInForm ? "New to Voting App?" : "Already a Member?"}{" "}
                 <span className="text-white" onClick={toggleSignInForm}>
                   {" "}
                   {isSignInForm ? "Sign Up" : "Sign In"}
