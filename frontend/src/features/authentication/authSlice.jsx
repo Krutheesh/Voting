@@ -5,6 +5,7 @@ const initialState = {
   userInfo:null,
   allUsers:null,
   isVoted:null,
+  isSidebarOpen:false
 }
 
 export const userSlice = createSlice({
@@ -13,6 +14,9 @@ export const userSlice = createSlice({
   reducers:{
     setIsVoted : (state) => {
       state.isVoted= false
+    },
+    setIsSideBarOpen:(state) => {
+      state.isSidebarOpen = !state.isSidebarOpen
     }
   },
   extraReducers:(builder) => {
@@ -56,5 +60,5 @@ export const userSlice = createSlice({
 })
 
 
-export const {setIsVoted} = userSlice.actions
+export const {setIsVoted,setIsSideBarOpen} = userSlice.actions
 export default userSlice.reducer

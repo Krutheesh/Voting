@@ -95,12 +95,12 @@ const Forms = () => {
  
   return (
     <>
-      <div className="relative flex  justify-center ">
-        <div className="w-full h-full absolute bg-black opacity-40 "></div>
+      <div className="relative flex  justify-center w-[100vw] h-[100vh] bg-gray-800   ">
+        <div className="w-full h-full fixed  opacity-40 "></div>
         <div className=" w-full bg-cover ">
           {/* <img className=" h-[100vh] md:h-full  " src={''} alt="bg-logo" /> */}
         </div>
-        <div className="absolute top-[6rem] ">
+        <div className="fixed top-[1.5rem] ">
           <form
             onSubmit={formHandler}
             action=""
