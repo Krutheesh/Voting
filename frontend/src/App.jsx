@@ -19,6 +19,8 @@ import Users from './admin/components/Users';
 import { ScrollTop } from './features/constants/ScrollTop';
 import ProtectedAdmin from './components/ProtectedAdmin';
 import { checkAuth } from './features/authentication/authApi';
+import DashBoardData from './admin/components/DashBoardData';
+import { getAllCandidates } from './features/candidates/candidatesApi';
 const appRouter = createBrowserRouter([
   {
     path:'/login',
@@ -59,6 +61,12 @@ const appRouter = createBrowserRouter([
 
   children :[
     {
+      
+      path:'/dashboard',
+       element:<ProtectedAdmin><DashBoardData/></ProtectedAdmin>,
+     },
+    {
+
       path:'/dashboard/addcandidate',
        element:<ProtectedAdmin><AddCandidate/></ProtectedAdmin>,
      },
@@ -77,6 +85,7 @@ const App = () => {
   
  useEffect(() => {
   dispatch(checkAuth())
+  dispatch(getAllCandidates())
 },[dispatch])
   return (
    

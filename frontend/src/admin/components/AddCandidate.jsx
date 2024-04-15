@@ -62,7 +62,7 @@ const dispatch = useDispatch()
 //   dispatch(checkAuth())
 // },[dispatch])
   return (
-    <div className='flex justify-center items-center bg-[#151028]'>
+    <div className='flex justify-center items-center  bg-[#151028]'>
      <form onSubmit={formHandler} action="" className='bg-gray-200 p-10 w-[90%] md:w-[60%]  flex flex-col space-y-3'>
       <input className='p-2 rounded-md' ref={name} type="text" placeholder='Name' required/>
       <input  className='p-2 rounded-md'  ref={party} type="text" placeholder='Party' required/>

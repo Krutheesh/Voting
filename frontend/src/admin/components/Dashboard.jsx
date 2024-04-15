@@ -3,7 +3,7 @@ import Sidebar from './Sidebar'
 import { Outlet } from 'react-router'
 import Navbar from '../../components/Navbar'
 import { useDispatch,useSelector } from 'react-redux'
-import { checkAuth } from '../../features/authentication/authApi'
+import { checkAuth, getAllUsers } from '../../features/authentication/authApi'
 import Navbar2 from './Navbar2'
 
 const Dashboard = () => {
@@ -12,24 +12,37 @@ const Dashboard = () => {
 //  useEffect(() => {
 //   dispatch(checkAuth())
 // },[dispatch])
+useEffect(() => {
+  dispatch(getAllUsers())
+  // dispatch(checkAuth())
+  console.log("hello")
+ },[dispatch])
   return (
-    <div className='bg-[#110d21] h-[100vh]'>
+    <div className='bg-[#110d21] '>
       
-     
-<Navbar2/>
+     <div className='md:fixed w-full'>
+     <Navbar2/>
+     </div>
+      <div className='hidden md:block md:w-full md:h-[15vh]'>
+      
+      </div>
      
       <div className='flex justify-between  '>
-        <div className='hidden md:block  md:w-[25%] lg:w-[20%]  '>
+        <div className='hidden md:block md:fixed md:w-[25%] md:top-[4rem] md:bg-gray-700 lg:w-[20%]  '>
 <Sidebar/>
+        </div>
+        <div className='hidden md:block md:w-[25%] md:bg-gray-700 lg:w-[20%] '>
+
         </div>
         <div className='block md:hidden absolute w-[65%]  '>
     {
       
       isSidebarOpen&&<Sidebar/>}
         </div>
-        <div className='w-[100%] md:w-[85%] md:p-10 p-2 '>
-
-          <div className=' p-5'>
+        <div className='w-[100%] md:w-[85%] '>
+       
+          <div className='p-10 bg-[#151028] '>
+         
               <Outlet/>
           </div>
          
