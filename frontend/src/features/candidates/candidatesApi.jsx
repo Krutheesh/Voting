@@ -19,9 +19,12 @@ export const addNewCandidate = createAsyncThunk(
        } catch (error) {
         
         if(error.response && error.response.data.message){
+          toast.success(error.response.data.message)
           return rejectWithValue(error.response.data.message)
+          
         }
         else{
+          toast.success(error.message)
           return rejectWithValue(error.message)
         }
        }

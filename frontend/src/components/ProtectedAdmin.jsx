@@ -8,7 +8,10 @@ function ProtectedAdmin({ children }) {
   const {userInfo} = useSelector(store => store.auth);
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+  if(!userInfo){
+    return navigate('/login')
+  }
+ 
 
 
   return children;

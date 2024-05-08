@@ -41,7 +41,7 @@ useEffect(() => {
         </div>
         <div className='w-[100%] md:w-[85%] '>
        
-          <div className='p-10 bg-[#151028] '>
+          <div className='p-10 min-h-[100vh] bg-[#151028] '>
          
               <Outlet/>
           </div>

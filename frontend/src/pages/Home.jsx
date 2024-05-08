@@ -12,9 +12,12 @@ import { checkAuth, voteCandidate } from "../features/authentication/authApi";
 import Edit from "./Edit";
 import Load from "./Load";
 import { setIsVoted } from "../features/authentication/authSlice";
+import HomeHero from "../components/HomeHero";
+import Pagination from "../features/common/Pagination";
 const Home = () => {
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(null);
+  const [page,setPage] = useState(0)
   const { totalCandidates } = useSelector((store) => store.candidates);
   const { userInfo,isLoading,isVoted} = useSelector((store) => store.auth);
   const { loading } = useSelector((store) => store.candidates);
@@ -70,6 +73,9 @@ const Home = () => {
   
   return (
     <div className="py-10 bg-[#151028] ">
+      <div>
+        <HomeHero/>
+      </div>
       {
         (isLoading)? 
         <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 backdrop-blur-md">
@@ -82,7 +88,7 @@ const Home = () => {
  
  </div>:  <div>
         {allCandidates &&
-          allCandidates.map((ele) => (
+          allCandidates.slice(page,page+1).map((ele) => (
             <div
               key={ele._id}
              
@@ -95,7 +101,7 @@ const Home = () => {
                   className="text-center flex flex-col justify-center items-center  mx-3   "
                 >
                   <div className={`rounded p-5 m-2 bg-[#221b46]  ${userInfo?.votedCandidateId === candidate._id?"border-[4px] shadow-md":"border"}  border-[#6027fb] text-white`} >
-                    <div className={`flex  justify-center mx-auto my-3 items-center w-[15rem] h-[15rem] rounded-full   ${candidate.party.toUpperCase()=="BJP"? "bjp-color-radial" :candidate.party.toUpperCase()=="CONGRESS"?"congress-color-radial":candidate.party.toUpperCase()=="BRS"?"brs-color-radial":"mis-color-radial "} `}>
+                    <div className={`flex  justify-center mx-auto my-3 items-center w-[15rem] h-[15rem] rounded-full   ${candidate.party.toUpperCase()=="BJP"? "bjp-color-radial" :candidate.party.toUpperCase()=="CONGRESS"?"congress-color-radial":candidate.party.toUpperCase()=="BRS"?"brs-color-radial"  :candidate.party.toUpperCase()=="INC"?"congress-color-radial":"mis-color-radial "} `}>
                       <img
                         src={candidate.avatar.url}
                         alt=""
@@ -173,8 +179,10 @@ const Home = () => {
         )}
         </div>
       }
-      
-    
+      <div >
+      {totalCandidates&& <Pagination data={totalCandidates} setPage={setPage} page={page}/>} 
+
+      </div>
     </div>
   );
 };

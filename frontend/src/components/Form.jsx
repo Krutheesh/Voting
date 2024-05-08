@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 import { login, register } from "../features/authentication/authApi";
+import { constituencyData } from "../features/constants/Constants";
 const Forms = () => {
   // console.log("form")
   const dispatch = useDispatch();
@@ -79,12 +80,7 @@ const Forms = () => {
     // Optionally, reset the selected constituency when the state changes
     setSelectedConstituency('');
   };
-  const constituencyData = {
-    Maharashtra: ['Mumbai North', 'Mumbai South', 'Pune', /* ... */],
-    Karnataka: ['Bangalore North', 'Bangalore South', 'Mysore', /* ... */],
-    Telangana:["Zaheerabad","Karimnagar"]
-    // ... other states and their constituencies
-  };
+  
   
 
   const handleConstituencyChange = (event) => {
@@ -95,16 +91,16 @@ const Forms = () => {
  
   return (
     <>
-      <div className="relative flex  justify-center w-[100vw] h-[100vh] bg-gray-800   ">
-        <div className="w-full h-full fixed  opacity-40 "></div>
-        <div className=" w-full bg-cover ">
-          {/* <img className=" h-[100vh] md:h-full  " src={''} alt="bg-logo" /> */}
-        </div>
-        <div className="fixed top-[1.5rem] ">
+      <div className=" flex  justify-center bg-black min-h-[100vh]  ">
+        <div className="   bg-black   "></div>
+        {/* <div className=" w-full bg-cover ">
+          <img className=" h-[100vh] md:h-full  " src={''} alt="bg-logo" />
+        </div> */}
+        <div className="  ">
           <form
             onSubmit={formHandler}
             action=""
-            className=" rounded-md w-[25rem] p-10 flex flex-col justify-center text-white  bg-black bg-opacity-80 "
+            className=" mt-[3rem] rounded-md w-[25rem] p-10 flex flex-col justify-center text-white  bg-gray-800   "
           >
             <h2 className="font-semibold text-[2rem] p-2 py-4 m-2 text-white">
               {isSignInForm ? "Sign In" : "Sign Up"}
